@@ -19,6 +19,7 @@ import {
   NavbarText
 } from 'reactstrap';
 import '.././node_modules/nprogress/nprogress.css';
+import Search from './blog/Search';
 
 Router.onRouteChangeStart = (url) => {
   return NProgress.start();
@@ -44,23 +45,47 @@ const Header = () => {
           <Navbar color="light" light expand="md">
 
             { isAuth() ?
-              (<NavbarBrand style={{ cursor: 'pointer' }}>
-                <Link href="/">
+              (
+                <NavbarBrand style={{ cursor: 'pointer' }}>
+                  <Link href="/">
+                    <NavLink className="font-weight-bold text-dark">
+                      { APP_NAME }
+                    </NavLink>
+                  </Link>
+                </NavbarBrand>
+              ) :
+              (
+                <NavbarBrand style={{ cursor: 'pointer' }}>
                   <NavLink className="font-weight-bold text-dark">
                     { APP_NAME }
                   </NavLink>
-                </Link>
-              </NavbarBrand>) :
-              (<NavbarBrand style={{ cursor: 'pointer' }}>
-                <NavLink className="font-weight-bold text-dark">
-                  { APP_NAME }
-                </NavLink>
-            </NavbarBrand>)
+                </NavbarBrand>
+              )
             }
 
             <NavbarToggler onClick={ toggle } />
             <Collapse isOpen={ isOpen } navbar>
               <Nav className="ml-auto" navbar>
+
+                { isAuth() && (
+                  <NavItem style={{ cursor: 'pointer' }}>
+                    <Link href="/blogs">
+                      <NavLink>
+                        Blogs
+                      </NavLink>
+                    </Link>
+                  </NavItem>
+                ) }
+
+                { isAuth() && (
+                  <NavItem style={{ cursor: 'pointer' }}>
+                    <Link href="/contact">
+                      <NavLink>
+                        Contact
+                      </NavLink>
+                    </Link>
+                  </NavItem>
+                ) }
 
                 { !isAuth() && (
                   <React.Fragment>
@@ -109,9 +134,20 @@ const Header = () => {
                   </NavItem>
                 ) }
 
+                { isAuth() && isAuth().role === 0 && (
+                  <NavItem style={{ cursor: 'pointer' }}>
+                    {/* <Link href="/user/crud/blog"> */}
+                      <NavLink href="/user/crud/blog" className="btn btn-primary text-light">
+                        Create Blog
+                      </NavLink>
+                    {/* </Link> */}
+                  </NavItem>
+                ) }
+
               </Nav>
             </Collapse>
           </Navbar>
+          { isAuth() && <Search/> }
         </div>
       );
 }

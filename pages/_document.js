@@ -1,11 +1,24 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import getConfig from 'next/config';
+const { publicRuntimeConfig } = getConfig();
 
 class MyDocument extends Document {
-//   static async getInitialProps(ctx) {
-//     const initialProps = await Document.getInitialProps(ctx)
-//     return { ...initialProps }
-//   }
-// NOT NEEDED IN THIS PROJECT! NOT EVERYTHING IS SERVER RENDERED!
+
+  // setGoogleTags() {
+  //   if (publicRuntimeConfig.PRODUCTION) {
+  //     return {
+  //       __html:
+  //         `
+  //           window.dataLayer = window.dataLayer || [];
+  //           function gtag(){dataLayer.push(arguments);}
+  //           gtag('js', new Date());
+
+  //           gtag('config', 'G-1NQZ0BHX7M');
+
+  //         `
+  //     }
+  //   }
+  // }
 
   render() {
     return (
@@ -23,10 +36,11 @@ class MyDocument extends Document {
                 rel="stylesheet"
                 href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.css"
             /> */}
-            {/* <link
+            <link
                 rel="stylesheet"
-                href="./static/css/styles.css"
-            /> */}
+                href="../../static/css/styles.css"
+            />
+            {/* <script dangerouslySetInnerHTML={ this.setGoogleTags }></script> */}
         </Head>
         <body>
           <Main />
