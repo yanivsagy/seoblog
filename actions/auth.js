@@ -115,7 +115,6 @@ export const authenticate = (data, next) => {
 
 export const isAuth = () => {
     if (process.browser) {
-        console.log("inside")
         const cookieChecked = getCookie('token');
         if (cookieChecked) {
             if (localStorage.getItem('user')) {
@@ -125,7 +124,6 @@ export const isAuth = () => {
             }
         }
     }
-    console.log("outside")
 };
 
 export const updateUser = (user, next) => {
