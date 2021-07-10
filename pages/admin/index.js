@@ -32,11 +32,11 @@ const AdminIndex = () => {
                                         <a>Update/Delete Blogs</a>
                                     </Link>
                                 </li>
-                                <li className="list-group-item">
+                                {/* <li className="list-group-item">
                                     <Link href={ `/profile/${ isAuth().username }` }>
                                         <a>View Profile</a>
                                     </Link>
-                                </li>
+                                </li> */}
                                 <li className="list-group-item">
                                     <Link href="/user/update">
                                         <a>Update Profile</a>
