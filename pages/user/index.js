@@ -23,7 +23,7 @@ const UserIndex = () => {
                                     </Link>
                                 </li>
                                 <li className="list-group-item">
-                                    <Link href={ `/profile/${ isAuth().username }` }>
+                                    <Link href={ `/profile/${ isAuth() && isAuth().username }` }>
                                         <a>View Profile</a>
                                     </Link>
                                 </li>
